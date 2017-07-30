@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity implements CompanyView, CompanyRecyclerAdapter.CompanyClickListener {
 
-    private static final String EXTRA_BOOK_ID = "book";
+    private static final String EXTRA_COMPANY = "company";
     private CompanyPresenter presenter;
     private CompanyRecyclerAdapter adapter;
     private RecyclerView companyRecycler;
@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements CompanyView, CompanyRecycl
     public void onCompanyClicked(Company company) {
         Log.d("Test", "Clicked on " + company.getName());
         Intent intent = new Intent(this, CompanyDetailsActivity.class);
-        intent.putExtra(EXTRA_BOOK_ID, company.getName());
+        intent.putExtra(EXTRA_COMPANY, company.getName());
         startActivity(intent);
     }
 }
