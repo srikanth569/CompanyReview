@@ -50,7 +50,7 @@ public class BasePay implements Parcelable{
         basePay.setCurrencyCode(obj.getString("currencyCode"));
         basePay.setName(obj.getString("name"));
         basePay.setSymbol(obj.getString("symbol"));
-        return null;
+        return basePay;
     }
 
     @Override
