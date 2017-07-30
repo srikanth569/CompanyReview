@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="@dimen/horizontal_margin_half_step"
+        card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/horizontal_margin_half_step"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="@dimen/horizontal_margin"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                tools:text="Great Place to work"/>
+
+        <TextView
+                android:id="@+id/jobTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                tools:text="Software Engineer"/>
+
+        <TextView
+                android:id="@+id/prosHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:text="@string/pros"
+                tools:text="Pros"/>
+
+        <TextView
+                android:id="@+id/prosText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:maxLines="4"
+                android:text="@string/cons"
+                tools:text="This is an Amazing company\n to work for "/>
+
+        <TextView
+                android:id="@+id/consHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:text="@string/pros"
+                tools:text="Cons"/>
+
+        <TextView
+                android:id="@+id/consText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:maxLines="4"
+                android:text="@string/pros"
+                tools:text="This is the worst company\n to work for "/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

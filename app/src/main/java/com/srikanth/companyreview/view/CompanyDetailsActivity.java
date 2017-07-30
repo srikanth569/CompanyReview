@@ -20,7 +20,7 @@ public class CompanyDetailsActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.company_details);
+        setContentView(R.layout.activity_company_details);
         company = getIntent().getParcelableExtra(EXTRA_COMPANY);
         ViewPager viewPager = findViewById(R.id.vPager);
         adapter = new PagerAdapter(getSupportFragmentManager());
