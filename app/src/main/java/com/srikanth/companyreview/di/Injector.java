@@ -1,7 +1,7 @@
 package com.srikanth.companyreview.di;
 
 import com.srikanth.companyreview.Constants;
-import com.srikanth.companyreview.data.GlassdoorService;
+import com.srikanth.companyreview.api.GlassdoorService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

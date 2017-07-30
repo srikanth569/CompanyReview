@@ -1,4 +1,4 @@
-package com.srikanth.companyreview.data;
+package com.srikanth.companyreview.api;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
