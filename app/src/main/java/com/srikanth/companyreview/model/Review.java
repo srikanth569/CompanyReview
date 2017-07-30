@@ -1,9 +1,12 @@
 package com.srikanth.companyreview.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Review {
+public class Review implements Parcelable {
     private String pros;
     private String advice;
     private String cons;
@@ -23,13 +26,11 @@ public class Review {
     private Boolean currentJob;
     private Integer employerId;
     private String employerName;
-    private Object employerResponse;
     private String employmentStatus;
     private Boolean featuredReview;
 
     private Integer helpfulCount;
     private Integer id;
-    private Object jobInformation;
 
     private String jobTitleFromDb;
     private String lengthOfEmployment;
@@ -155,14 +156,6 @@ public class Review {
         this.employerName = employerName;
     }
 
-    public Object getEmployerResponse() {
-        return employerResponse;
-    }
-
-    public void setEmployerResponse(Object employerResponse) {
-        this.employerResponse = employerResponse;
-    }
-
     public String getEmploymentStatus() {
         return employmentStatus;
     }
@@ -201,14 +194,6 @@ public class Review {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Object getJobInformation() {
-        return jobInformation;
-    }
-
-    public void setJobInformation(Object jobInformation) {
-        this.jobInformation = jobInformation;
     }
 
     public String getJobTitle() {
@@ -330,6 +315,98 @@ public class Review {
     public void setWorkLifeBalanceRating(Double workLifeBalanceRating) {
         this.workLifeBalanceRating = workLifeBalanceRating;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.pros);
+        dest.writeString(this.advice);
+        dest.writeString(this.cons);
+        dest.writeString(this.jobTitle);
+        dest.writeString(this.headline);
+        dest.writeValue(this.overallNumeric);
+        dest.writeString(this.approvalStatus);
+        dest.writeString(this.attributionURL);
+        dest.writeValue(this.careerOpportunitiesRating);
+        dest.writeString(this.ceoApproval);
+        dest.writeValue(this.ceoRating);
+        dest.writeValue(this.compensationAndBenefitsRating);
+        dest.writeValue(this.cultureAndValuesRating);
+        dest.writeValue(this.currentJob);
+        dest.writeValue(this.employerId);
+        dest.writeString(this.employerName);
+        dest.writeString(this.employmentStatus);
+        dest.writeValue(this.featuredReview);
+        dest.writeValue(this.helpfulCount);
+        dest.writeValue(this.id);
+        dest.writeString(this.jobTitleFromDb);
+        dest.writeString(this.lengthOfEmployment);
+        dest.writeString(this.location);
+        dest.writeValue(this.newReview);
+        dest.writeValue(this.notHelpfulCount);
+        dest.writeString(this.overall);
+        dest.writeValue(this.recommendToFriend);
+        dest.writeString(this.reviewDateTime);
+        dest.writeValue(this.seniorLeadershipRating);
+        dest.writeString(this.sqLogoUrl);
+        dest.writeValue(this.totalHelpfulCount);
+        dest.writeValue(this.workLifeBalanceRating);
+    }
+
+    public Review() {
+    }
+
+    protected Review(Parcel in) {
+        this.pros = in.readString();
+        this.advice = in.readString();
+        this.cons = in.readString();
+        this.jobTitle = in.readString();
+        this.headline = in.readString();
+        this.overallNumeric = (Double) in.readValue(Double.class.getClassLoader());
+        this.approvalStatus = in.readString();
+        this.attributionURL = in.readString();
+        this.careerOpportunitiesRating = (Double) in.readValue(Double.class.getClassLoader());
+        this.ceoApproval = in.readString();
+        this.ceoRating = (Double) in.readValue(Double.class.getClassLoader());
+        this.compensationAndBenefitsRating = (Double) in.readValue(Double.class.getClassLoader());
+        this.cultureAndValuesRating = (Double) in.readValue(Double.class.getClassLoader());
+        this.currentJob = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.employerId = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.employerName = in.readString();
+        this.employmentStatus = in.readString();
+        this.featuredReview = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.helpfulCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.jobTitleFromDb = in.readString();
+        this.lengthOfEmployment = in.readString();
+        this.location = in.readString();
+        this.newReview = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.notHelpfulCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.overall = in.readString();
+        this.recommendToFriend = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.reviewDateTime = in.readString();
+        this.seniorLeadershipRating = (Double) in.readValue(Double.class.getClassLoader());
+        this.sqLogoUrl = in.readString();
+        this.totalHelpfulCount = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.workLifeBalanceRating = (Double) in.readValue(Double.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<Review> CREATOR = new Parcelable.Creator<Review>() {
+        @Override
+        public Review createFromParcel(Parcel source) {
+            return new Review(source);
+        }
+
+        @Override
+        public Review[] newArray(int size) {
+            return new Review[size];
+        }
+    };
 }
 
 

@@ -1,9 +1,12 @@
 package com.srikanth.companyreview.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BasePay {
+public class BasePay implements Parcelable{
     private Double amount;
     private String currencyCode;
     private String name;
@@ -49,4 +52,39 @@ public class BasePay {
         basePay.setSymbol(obj.getString("symbol"));
         return null;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.amount);
+        dest.writeString(this.currencyCode);
+        dest.writeString(this.name);
+        dest.writeString(this.symbol);
+    }
+
+    public BasePay() {
+    }
+
+    protected BasePay(Parcel in) {
+        this.amount = (Double) in.readValue(Double.class.getClassLoader());
+        this.currencyCode = in.readString();
+        this.name = in.readString();
+        this.symbol = in.readString();
+    }
+
+    public static final Creator<BasePay> CREATOR = new Creator<BasePay>() {
+        @Override
+        public BasePay createFromParcel(Parcel source) {
+            return new BasePay(source);
+        }
+
+        @Override
+        public BasePay[] newArray(int size) {
+            return new BasePay[size];
+        }
+    };
 }

@@ -1,10 +1,13 @@
 package com.srikanth.companyreview.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Salary {
+public class Salary implements Parcelable {
 
     private String employerName;
     private String employmentStatus;
@@ -147,4 +150,59 @@ public class Salary {
     public void setSqLogoUrl(String sqLogoUrl) {
         this.sqLogoUrl = sqLogoUrl;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.employerName);
+        dest.writeString(this.employmentStatus);
+        dest.writeString(this.attributionURL);
+        dest.writeParcelable(this.basePay, flags);
+        dest.writeValue(this.employerId);
+        dest.writeValue(this.id);
+        dest.writeString(this.jobTitle);
+        dest.writeString(this.location);
+        dest.writeParcelable(this.meanBasePay, flags);
+        dest.writeString(this.payDeltaLocationType);
+        dest.writeValue(this.payDeltaPercent);
+        dest.writeString(this.payPeriod);
+        dest.writeString(this.reviewDateTime);
+        dest.writeString(this.sqLogoUrl);
+    }
+
+    public Salary() {
+    }
+
+    protected Salary(Parcel in) {
+        this.employerName = in.readString();
+        this.employmentStatus = in.readString();
+        this.attributionURL = in.readString();
+        this.basePay = in.readParcelable(BasePay.class.getClassLoader());
+        this.employerId = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.jobTitle = in.readString();
+        this.location = in.readString();
+        this.meanBasePay = in.readParcelable(BasePay.class.getClassLoader());
+        this.payDeltaLocationType = in.readString();
+        this.payDeltaPercent = (Double) in.readValue(Double.class.getClassLoader());
+        this.payPeriod = in.readString();
+        this.reviewDateTime = in.readString();
+        this.sqLogoUrl = in.readString();
+    }
+
+    public static final Parcelable.Creator<Salary> CREATOR = new Parcelable.Creator<Salary>() {
+        @Override
+        public Salary createFromParcel(Parcel source) {
+            return new Salary(source);
+        }
+
+        @Override
+        public Salary[] newArray(int size) {
+            return new Salary[size];
+        }
+    };
 }
