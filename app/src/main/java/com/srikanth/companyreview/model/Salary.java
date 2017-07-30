@@ -33,8 +33,7 @@ public class Salary {
         salary.setMeanBasePay(new BasePay().loadFromJson(obj.getJSONObject("meanBasePay")));
         salary.setLocation(obj.getString("location"));
         salary.setReviewDateTime(obj.getString("reviewDateTime"));
-
-        return null;
+        return salary;
     }
 
     public String getAttributionURL() {
