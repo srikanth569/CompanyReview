@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.srikanth.companyreview.Constants;
 import com.srikanth.companyreview.R;
@@ -27,7 +28,7 @@ public class SalaryFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        company = getArguments().getParcelable("COMPANY");
+        company = getArguments().getParcelable(Constants.COMPANY);
     }
 
     @Nullable
@@ -35,9 +36,16 @@ public class SalaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_salaries, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.salaryRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        SalaryAdapter adapter = new SalaryAdapter(company);
-        recyclerView.setAdapter(adapter);
+        if (company.getSalaries().size() == 0) {
+            TextView emptyView = view.findViewById(R.id.emptyView);
+            emptyView.setVisibility(View.VISIBLE);
+            emptyView.setText(getString(R.string.no_salary_to_display));
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+            SalaryAdapter adapter = new SalaryAdapter(company);
+            recyclerView.setAdapter(adapter);
+        }
         return view;
     }
 }

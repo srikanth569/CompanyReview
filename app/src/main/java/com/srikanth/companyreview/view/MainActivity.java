@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.srikanth.companyreview.Constants;
@@ -43,12 +42,11 @@ public class MainActivity extends Activity implements CompanyView, CompanyRecycl
 
     @Override
     public void showError(String error) {
-        Toast.makeText(this, "Error loading data", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.error_loading), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onCompanyClicked(Company company) {
-        Log.d("Test", "Clicked on " + company.getName());
         Intent intent = new Intent(this, CompanyDetailsActivity.class);
         intent.putExtra(Constants.COMPANY, company);
         startActivity(intent);

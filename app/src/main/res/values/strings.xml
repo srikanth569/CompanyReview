@@ -6,4 +6,7 @@
     <string name="salaries">Salaries</string>
     <string name="reviews_format">Reviews %1$d</string>
     <string name="salries_format">Salaries %1$d</string>
+    <string name="no_reviews_to_display">No Reviews to Display</string>
+    <string name="no_salary_to_display">No Salaries to Display</string>
+    <string name="error_loading">Error Loading Info</string>
 </resources>

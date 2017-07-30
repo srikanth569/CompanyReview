@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.srikanth.companyreview.Constants;
 import com.srikanth.companyreview.R;
@@ -37,9 +38,16 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_review, container, false);
         reviewRecycler = view.findViewById(R.id.reviewRecycler);
-        reviewRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        ReviewAdapter reviewAdapter = new ReviewAdapter(company);
-        reviewRecycler.setAdapter(reviewAdapter);
+        if (company.getReviews().size() == 0) {
+            TextView emptyView = view.findViewById(R.id.emptyView);
+            emptyView.setVisibility(View.VISIBLE);
+            emptyView.setText(getString(R.string.no_reviews_to_display));
+            reviewRecycler.setVisibility(View.GONE);
+        } else {
+            reviewRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+            ReviewAdapter reviewAdapter = new ReviewAdapter(company);
+            reviewRecycler.setAdapter(reviewAdapter);
+        }
         return view;
     }
 }

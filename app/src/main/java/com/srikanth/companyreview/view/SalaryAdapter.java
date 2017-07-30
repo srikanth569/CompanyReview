@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SalaryAdapter extends RecyclerView.Adapter<SalaryAdapter.SalaryViewHolder> {
 
-    List<Salary> salaryList;
+    private List<Salary> salaryList;
 
     public SalaryAdapter(Company company) {
         salaryList = company.getSalaries();
