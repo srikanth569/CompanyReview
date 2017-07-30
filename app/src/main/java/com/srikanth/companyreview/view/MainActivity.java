@@ -1,6 +1,7 @@
 package com.srikanth.companyreview.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity implements CompanyView, CompanyRecyclerAdapter.CompanyClickListener {
 
+    private static final String EXTRA_BOOK_ID = "book";
     private CompanyPresenter presenter;
     private CompanyRecyclerAdapter adapter;
     private RecyclerView companyRecycler;
@@ -47,5 +49,8 @@ public class MainActivity extends Activity implements CompanyView, CompanyRecycl
     @Override
     public void onCompanyClicked(Company company) {
         Log.d("Test", "Clicked on " + company.getName());
+        Intent intent = new Intent(this, CompanyDetailsActivity.class);
+        intent.putExtra(EXTRA_BOOK_ID, company.getName());
+        startActivity(intent);
     }
 }
