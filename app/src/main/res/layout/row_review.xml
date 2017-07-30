@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_margin="@dimen/horizontal_margin_half_step"
+        android:backgroundTint="@color/gray_blue"
         card_view:cardCornerRadius="4dp">
 
     <LinearLayout
