@@ -9,15 +9,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.srikanth.companyreview.R;
+import com.srikanth.companyreview.model.Company;
 
 public class ReviewFragment extends Fragment {
 
-    private String title;
+    private Company company;
 
-    public static Fragment newInstance(String company) {
+    public static Fragment newInstance(Company company) {
         ReviewFragment reviewFragment = new ReviewFragment();
         Bundle args = new Bundle();
-        args.putString("COMPANY", company);
+        args.putParcelable("COMPANY", company);
         reviewFragment.setArguments(args);
         return reviewFragment;
     }
@@ -25,7 +26,7 @@ public class ReviewFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        title = getArguments().getString("COMPANY");
+        company = getArguments().getParcelable("COMPANY");
     }
 
     @Nullable
@@ -33,7 +34,7 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_review, container, false);
         TextView tvLabel = view.findViewById(R.id.reviewText);
-        tvLabel.setText(title + " -- " + title);
+        tvLabel.setText(company.getName());
         return view;
     }
 }

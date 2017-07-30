@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements CompanyView, CompanyRecycl
     public void onCompanyClicked(Company company) {
         Log.d("Test", "Clicked on " + company.getName());
         Intent intent = new Intent(this, CompanyDetailsActivity.class);
-        intent.putExtra(EXTRA_COMPANY, company.getName());
+        intent.putExtra(EXTRA_COMPANY, company);
         startActivity(intent);
     }
 }

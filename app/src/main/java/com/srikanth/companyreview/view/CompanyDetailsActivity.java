@@ -9,18 +9,19 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.srikanth.companyreview.R;
+import com.srikanth.companyreview.model.Company;
 
 public class CompanyDetailsActivity extends FragmentActivity {
 
     private static final String EXTRA_COMPANY = "company";
 
     PagerAdapter adapter;
-    String company;
+    Company company;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.company_details);
-        company = getIntent().getStringExtra(EXTRA_COMPANY);
+        company = getIntent().getParcelableExtra(EXTRA_COMPANY);
         ViewPager viewPager = findViewById(R.id.vPager);
         adapter = new PagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
