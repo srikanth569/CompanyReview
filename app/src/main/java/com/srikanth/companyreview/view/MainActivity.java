@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.srikanth.companyreview.R;
@@ -13,7 +14,7 @@ import com.srikanth.companyreview.presenter.CompanyPresenter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements CompanyView {
+public class MainActivity extends Activity implements CompanyView, CompanyRecyclerAdapter.CompanyClickListener {
 
     private CompanyPresenter presenter;
     private CompanyRecyclerAdapter adapter;
@@ -25,7 +26,7 @@ public class MainActivity extends Activity implements CompanyView {
         setContentView(R.layout.activity_main);
         companyRecycler = findViewById(R.id.companyRecycler);
         presenter = new CompanyPresenter(this, Injector.provideService());
-        adapter = new CompanyRecyclerAdapter(new ArrayList<Company>());
+        adapter = new CompanyRecyclerAdapter(new ArrayList<Company>(), this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         companyRecycler.setLayoutManager(layoutManager);
         companyRecycler.setAdapter(adapter);
@@ -41,5 +42,10 @@ public class MainActivity extends Activity implements CompanyView {
     @Override
     public void showError(String error) {
         Toast.makeText(this, "Error loading data", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onCompanyClicked(Company company) {
+        Log.d("Test", "Clicked on " + company.getName());
     }
 }

@@ -14,16 +14,18 @@ import java.util.ArrayList;
 public class CompanyRecyclerAdapter extends RecyclerView.Adapter<CompanyRecyclerAdapter.CompanyViewHolder> {
 
     ArrayList<Company> companies;
+    CompanyClickListener companyClickListener;
 
-    public CompanyRecyclerAdapter(ArrayList<Company> companies) {
+    public CompanyRecyclerAdapter(ArrayList<Company> companies, CompanyClickListener companyClickListener) {
         this.companies = companies;
+        this.companyClickListener = companyClickListener;
     }
 
     @Override
     public CompanyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.company_list, parent, false);
-        return new CompanyViewHolder(view);
+        return new CompanyViewHolder(view, companyClickListener);
     }
 
     @Override
@@ -39,21 +41,33 @@ public class CompanyRecyclerAdapter extends RecyclerView.Adapter<CompanyRecycler
         return companies.size();
     }
 
-    public void setCompanies(ArrayList<Company> comapnies) {
-        this.companies = comapnies;
+    public void setCompanies(ArrayList<Company> companies) {
+        this.companies = companies;
         notifyDataSetChanged();
     }
 
-    static class CompanyViewHolder extends RecyclerView.ViewHolder {
-        TextView companyName;
-        TextView salaries;
-        TextView reviews;
+    public class CompanyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView companyName;
+        private TextView salaries;
+        private TextView reviews;
+        private CompanyClickListener companyListener;
 
-        public CompanyViewHolder(View itemView) {
+        public CompanyViewHolder(View itemView, CompanyClickListener clickListener) {
             super(itemView);
             companyName = itemView.findViewById(R.id.companyName);
             salaries = itemView.findViewById(R.id.salaries);
             reviews = itemView.findViewById(R.id.reviews);
+            itemView.setOnClickListener(this);
+            this.companyListener = clickListener;
         }
+
+        @Override
+        public void onClick(View view) {
+            companyListener.onCompanyClicked(companies.get(getAdapterPosition()));
+        }
+    }
+
+    public interface CompanyClickListener {
+        void onCompanyClicked(Company company);
     }
 }
