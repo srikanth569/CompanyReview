@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Company {
 
-    String name;
-    List<Review> reviews;
-    List<Salary> salaries;
+    private String name;
+    private List<Review> reviews;
+    private List<Salary> salaries;
 
     public Company(String employerName) {
         this.name = employerName;
