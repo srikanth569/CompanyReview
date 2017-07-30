@@ -2,4 +2,8 @@
     <string name="app_name">CompanyReview</string>
     <string name="pros">Pros</string>
     <string name="cons">Cons</string>
+    <string name="reviews">Reviews</string>
+    <string name="salaries">Salaries</string>
+    <string name="reviews_format">Reviews %1$d</string>
+    <string name="salries_format">Salaries %1$d</string>
 </resources>

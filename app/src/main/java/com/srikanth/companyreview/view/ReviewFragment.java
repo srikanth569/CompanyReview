@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.srikanth.companyreview.Constants;
 import com.srikanth.companyreview.R;
 import com.srikanth.companyreview.model.Company;
 
@@ -20,7 +21,7 @@ public class ReviewFragment extends Fragment {
     public static Fragment newInstance(Company company) {
         ReviewFragment reviewFragment = new ReviewFragment();
         Bundle args = new Bundle();
-        args.putParcelable("COMPANY", company);
+        args.putParcelable(Constants.COMPANY, company);
         reviewFragment.setArguments(args);
         return reviewFragment;
     }
@@ -28,7 +29,7 @@ public class ReviewFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        company = getArguments().getParcelable("COMPANY");
+        company = getArguments().getParcelable(Constants.COMPANY);
     }
 
     @Nullable

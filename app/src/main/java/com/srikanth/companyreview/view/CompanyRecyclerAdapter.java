@@ -32,8 +32,8 @@ public class CompanyRecyclerAdapter extends RecyclerView.Adapter<CompanyRecycler
     public void onBindViewHolder(CompanyViewHolder holder, int position) {
         Company company = companies.get(position);
         holder.companyName.setText(company.getName());
-        holder.reviews.setText("Reviews " + company.getReviews().size());
-        holder.salaries.setText("Salaries " + company.getSalaries().size());
+        holder.reviews.setText(holder.reviews.getContext().getString(R.string.reviews_format, company.getReviews().size()));
+        holder.salaries.setText(holder.salaries.getContext().getString(R.string.salries_format, company.getSalaries().size()));
     }
 
     @Override

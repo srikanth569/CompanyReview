@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.srikanth.companyreview.Constants;
 import com.srikanth.companyreview.R;
 import com.srikanth.companyreview.di.Injector;
 import com.srikanth.companyreview.model.Company;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity implements CompanyView, CompanyRecyclerAdapter.CompanyClickListener {
 
-    private static final String EXTRA_COMPANY = "company";
     private CompanyPresenter presenter;
     private CompanyRecyclerAdapter adapter;
     private RecyclerView companyRecycler;
@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements CompanyView, CompanyRecycl
     public void onCompanyClicked(Company company) {
         Log.d("Test", "Clicked on " + company.getName());
         Intent intent = new Intent(this, CompanyDetailsActivity.class);
-        intent.putExtra(EXTRA_COMPANY, company);
+        intent.putExtra(Constants.COMPANY, company);
         startActivity(intent);
     }
 }

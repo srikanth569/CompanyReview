@@ -53,9 +53,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin_half_step"
                 android:maxLines="4"
-                android:text="@string/cons"
                 tools:text="This is an Amazing company\n to work for "/>
 
         <TextView
@@ -65,7 +64,7 @@
                 android:layout_gravity="start"
                 android:layout_marginStart="@dimen/horizontal_margin"
                 android:layout_marginTop="@dimen/horizontal_margin"
-                android:text="@string/pros"
+                android:text="@string/cons"
                 tools:text="Cons"/>
 
         <TextView
@@ -74,9 +73,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/horizontal_margin_half_step"
+                android:layout_marginBottom="@dimen/horizontal_margin_half_step"
                 android:maxLines="4"
-                android:text="@string/pros"
                 tools:text="This is the worst company\n to work for "/>
     </LinearLayout>
 </android.support.v7.widget.CardView>
