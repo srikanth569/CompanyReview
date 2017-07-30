@@ -11,12 +11,11 @@ public class Company {
 
     public Company(String employerName) {
         this.name = employerName;
+        reviews = new ArrayList<>();
+        salaries = new ArrayList<>();
     }
 
     public void addReview(Review review) {
-        if (review == null) {
-            return;
-        }
         if (reviews == null) {
             reviews = new ArrayList<>();
         }
@@ -24,12 +23,33 @@ public class Company {
     }
 
     public void addSalary(Salary salary) {
-        if (salary == null) {
-            return;
-        }
         if (salaries == null) {
             salaries = new ArrayList<>();
         }
         salaries.add(salary);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<Salary> getSalaries() {
+        return salaries;
+    }
+
+    public void setSalaries(List<Salary> salaries) {
+        this.salaries = salaries;
     }
 }

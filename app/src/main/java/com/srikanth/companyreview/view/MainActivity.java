@@ -2,8 +2,9 @@ package com.srikanth.companyreview.view;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.srikanth.companyreview.R;
 import com.srikanth.companyreview.di.Injector;
@@ -12,40 +13,33 @@ import com.srikanth.companyreview.presenter.CompanyPresenter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements View.OnClickListener, CompanyView {
-
-    Button tester;
+public class MainActivity extends Activity implements CompanyView {
 
     private CompanyPresenter presenter;
+    private CompanyRecyclerAdapter adapter;
+    private RecyclerView companyRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tester = findViewById(R.id.tester);
-        tester.setOnClickListener(this);
+        companyRecycler = findViewById(R.id.companyRecycler);
         presenter = new CompanyPresenter(this, Injector.provideService());
-
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onClick(View view) {
+        adapter = new CompanyRecyclerAdapter(new ArrayList<Company>());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        companyRecycler.setLayoutManager(layoutManager);
+        companyRecycler.setAdapter(adapter);
         presenter.initDataSet();
     }
 
     @Override
     public void showCompanyList(ArrayList<Company> companies) {
-        CompanyRecyclerAdapater adapater = new CompanyRecyclerAdapater(companies);
+        adapter.setCompanies(companies);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showError(String error) {
-
+        Toast.makeText(this, "Error loading data", Toast.LENGTH_LONG).show();
     }
 }
